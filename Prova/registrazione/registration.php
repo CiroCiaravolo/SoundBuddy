@@ -3,8 +3,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: /");
 }
 else {
-    $dbconn = pg_connect("host=localhost port=5433 dbname=EsempioLogin 
-                user=postgres password=password") 
+    $dbconn = pg_connect("host= port= dbname= 
+                user= password=") 
                 or die('Could not connect: ' . pg_last_error());
 }
 ?>
@@ -19,20 +19,20 @@ else {
                 $result=pg_query_params($dbconn, $q1, array($email));
                 if ($tuple=pg_fetch_array($result, null, PGSQL_ASSOC)) {
                     echo "<h1> Spiacente, l'indirizzo email non e' disponibile</h1>
-                        Se vuoi, <a href=../login> clicca qui per loggarti </a>";
+                        Se vuoi, <a href=../login/index.html> clicca qui per loggarti </a>";
                 }
                 else {
                     $nome = $_POST['inputName'];
                     $cognome = $_POST['inputSurname'];
                     $cap = $_POST['inputCap'];
-                    $password = password_hash($_POST['inputPassword']);
+                    $password = $_POST['inputPassword']; //$password = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
                     $q2 = "insert into utente values ($1,$2,$3,$4,$5)";
                     $data = pg_query_params($dbconn, $q2,
                         array($email, $nome, $cognome, $password, $cap));
                     if ($data) {
                         echo "<h1> Registrazione completata. 
-                            Puoi iniziare a usare il sito <br/></h1>";
-                        echo "<a href=../login> Clicca qui </a>
+                            Puoi iniziare a usare il sito <br/></h1>
+                            <a href=../login/index.html> Clicca qui </a>
                             per loggarti!";
                     }
                 }

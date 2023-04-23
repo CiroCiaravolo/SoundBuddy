@@ -3,8 +3,8 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header("Location: /");
 }
 else {
-    $dbconn = pg_connect("host=localhost port=5433 dbname=EsempioLogin 
-                user=postgres password=password") 
+    $dbconn = pg_connect("host= port= dbname= 
+                user= password=") 
                 or die('Could not connect: ' . pg_last_error());
 }
 ?>
@@ -22,12 +22,12 @@ else {
                         <a href=../registrazione/index.html> Clicca qui per farlo </a>";
                 }
                 else {
-                    $password = password_hash($_POST['inputPassword']);
+                    $password = $_POST['inputPassword']; //$password = $_POST['inputPassword']; //$password = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
                     $q2 = "select * from utente where email = $1 and paswd = $2";
                     $result = pg_query_params($dbconn, $q2, array($email,$password));
                     if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))) {
                         echo "<h1> La password e' sbagliata! </h1>
-                            <a href=login.html> Clicca qui per loggarti </a>";
+                            <a href=index.html> Clicca qui per loggarti </a>";
                     }
                     else {
                         $nome = $tuple['nome'];
