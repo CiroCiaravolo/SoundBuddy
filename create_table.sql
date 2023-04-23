@@ -1,8 +1,6 @@
 create table utente (
+    username varchar(40),
     email varchar(40), 
-    nome varchar(40),
-    cognome varchar(40),
     paswd varchar(60) not null,
-    cap varchar(5),
     primary key (email)
 );
