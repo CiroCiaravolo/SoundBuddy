@@ -23,7 +23,7 @@ else {
                 }
                 else {
                     $username = $_POST['inputUsername'];
-                    $password = $_POST['inputPassword']; //$password = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
+                    $password = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
                     $q2 = "insert into utente values ($1,$2,$3)";
                     $data = pg_query_params($dbconn, $q2,
                         array($username, $email, $password));

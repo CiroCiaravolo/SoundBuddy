@@ -22,17 +22,17 @@ else {
                         <a href=../SoundBuddy.html> Clicca qui per farlo </a>";
                 }
                 else {
-                    $password = $_POST['inputPassword']; //$password = $_POST['inputPassword']; //$password = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
-                    $q2 = "select * from utente where email = $1 and paswd = $2";
-                    $result = pg_query_params($dbconn, $q2, array($email,$password));
-                    if (!($tuple=pg_fetch_array($result, null, PGSQL_ASSOC))) {
-                        echo "<h1> La password e' sbagliata! </h1>
-                            <a href=../SoundBuddy.html> Clicca qui per loggarti </a>";
+                    $password = $_POST['inputPassword'];
+                    $q2 = "select * from utente where email = $1";
+                    $result = pg_query_params($dbconn, $q2, array($email));
+                    $tuple=pg_fetch_array($result, null, PGSQL_ASSOC);
+                    if (password_verify($password, $tuple['paswd'])) {
+                        $username = $tuple['username'];
+                        header("Location: welcome.php?username=$username");
                     }
                     else {
-                        $username = $tuple['username'];
-                        echo "<a href=../welcome.php?username=$username> Premi qui </a>
-                            per inziare a usare il sito";
+                        echo "<h1> La password e' sbagliata! </h1>
+                            <a href=../SoundBuddy.html> Clicca qui per loggarti </a>";
                     }
                 }
             }
