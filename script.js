@@ -96,11 +96,11 @@ function sicurezzaPassword() {
         b.style.backgroundColor = "green";
         a.innerHTML = "Molto forte";
     }
-    if (x >60) {
+    if (x <= 80) {
         b.style.backgroundColor = "green";
         a.innerHTML = "Forte";
     }
-    if (x <=40) {
+    if (x <= 60) {
         b.style.backgroundColor = "yellow";
         a.innerHTML = "Buona";
     }
