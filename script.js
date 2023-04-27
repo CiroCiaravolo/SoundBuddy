@@ -94,19 +94,19 @@ function sicurezzaPassword() {
     b.style.width = x + "%";
     if (x == 100) {
         b.style.backgroundColor = "green";
-        a.innerHTML = "Very strong";
+        a.innerHTML = "Molto forte";
     }
     if (x >60) {
         b.style.backgroundColor = "green";
-        a.innerHTML = "Strong";
+        a.innerHTML = "Forte";
     }
     if (x <=40) {
         b.style.backgroundColor = "yellow";
-        a.innerHTML = "Good";
+        a.innerHTML = "Buona";
     }
     if (x <=20) {
         b.style.backgroundColor = "red";
-        a.innerHTML = "Weak";
+        a.innerHTML = "Debole";
     }
 
     if(password.length == 0){
