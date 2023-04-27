@@ -269,3 +269,25 @@ header{
 .login-register p a:hover{
     text-decoration: underline;
 }
+
+#pb {
+    width: 100%;
+    background-color: #ddd;
+    max-width:300px;
+}
+#b {
+    width: 1%;
+    height: 10px;
+    background-color: #4CAF50;
+    max-width:300px;
+}
+#paswd {
+    width:300px;
+    padding:5px;
+    text-align:center;
+}
+#a {
+    font-weight:bold;
+    text-align:center;
+}
+
